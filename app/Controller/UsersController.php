@@ -16,15 +16,22 @@ class UsersController extends AppController{
     }
 
 	public function index(){
+        $roles = array(
+            null => 'Ninguno',
+            'admin'=> 'Adminsitrador',
+            'audit' => 'Auditor',
+            'user' => 'Usuario con restricciones'
+        );
 		$this->User->recursive = 0;
 		$users = $this->paginate();
 		$this->set(compact('users'));
+        $this->set(compact('roles'));
 	}
 
 	public function view($id = null) {
         $user = $this->User->read(null, $id);
         if(empty($user)){
-        	$this->setFlash('Usuario no valido', 'error');
+        	$this->Session->setFlash('Usuario no valido', 'error');
         	$this->redirect(array('controller'=>'users', 'action'=>'index'));
         }
         $this->set('user', $this->User->read(null, $id));
@@ -33,10 +40,10 @@ class UsersController extends AppController{
     public function add(){
     	if(!empty($this->data)){
     		if($this->User->save($this->data)){
-    			$this->setFlash('Usuario creado', 'succes');
-    			$this->redirect(array('controller'=>'users', 'aciton'=>'view', $this->User->id));
+    			$this->Session->setFlash('Usuario creado', 'succes');
+    			$this->redirect(array('controller'=>'users', 'aciton'=>'index'));
     		}else{
-    			$this->setFlash('Error al crear el usuario. Intente nuevamente', 'error');
+    			$this->Session->setFlash('Error al crear el usuario. Intente nuevamente', 'error');
     		}
     	}
         $roles = array(
@@ -51,15 +58,15 @@ class UsersController extends AppController{
     public function edit($id = null){
     	$user = $this->User->read(null, $id);
         if(empty($user)){
-        	$this->setFlash('Usuario no valido', 'error');
+        	$this->Session->setFlash('Usuario no valido', 'error');
         	$this->redirect(array('controller'=>'users', 'action'=>'index'));
         }
         if(!empty($this->data)){
         	if($this->User->saveAll($this->data)){
-        		$this->setFlash('Usuario creado', 'succes');
+        		$this->Session->setFlash('Usuario creado', 'succes');
     			$this->redirect(array('controller'=>'users', 'aciton'=>'view', $this->User->id));
     		}else{
-    			$this->setFlash('Error al crear el usuario. Intente nuevamente', 'error');
+    			$this->Session->setFlash('Error al crear el usuario. Intente nuevamente', 'error');
     		}
         }else{
         	$this->set('user', $this->User->read(null, $id));
@@ -68,10 +75,10 @@ class UsersController extends AppController{
 
     public function delete($id = null){
     	if($this->User->del($id, false)){
-    		$this->setFlash('Usuario eliminado', 'succes');
+    		$this->Session->setFlash('Usuario eliminado', 'succes');
     		$this->redirect(array('controller'=>'users', 'aciton'=>'index'));
     	}else{
-    		$this->setFlash('Usuario creado', 'succes');
+    		$this->Session->setFlash('Usuario creado', 'succes');
     		$this->redirect(array('controller'=>'users', 'aciton'=>'view', $this->User->id));
     	}
     }
