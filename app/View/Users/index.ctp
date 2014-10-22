@@ -1,6 +1,6 @@
 <?php //print_r($users); die(); ?>
 <div class="users form well bs-component">
-	<h3>Usuarios</h3>
+	<h3>Lista de usuarios</h3>
 	<hr />
 	<table class="table table-striped table-hover ">
 		<thead>

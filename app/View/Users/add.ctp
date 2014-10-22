@@ -1,14 +1,16 @@
 <script type="text/javascript">
   $('document').ready(function(){
     $('.text-danger').hide();
-    $('.second-pass, .first-pass').onblur(function(){
+    $('.second-pass, .first-pass').blur(function(){
       var first = $('.first-pass').val();
       var second = $('.second-pass').val();
       if(first!=second){
         $('.text-danger').show();
-        $('.first-pass, .second-pass').addClass('.hass-error');
+        $('.first-pass').parent().parent().find('.form-group').addClass('hass-error');
+        $('.second-pass').parent().parent().find('.form-group').addClass('hass-error');
       }else{
-        $('.first-pass, .second-pass').removeClass('.hass-error');
+        $('.first-pass').parent().parent().find('.form-group').removeClass('hass-error');
+        $('.second-pass').parent().parent().find('.form-group').removeClass('hass-error');
       }
     });
   });
@@ -43,11 +45,11 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4 form-group first-pass">
-            <?php echo $this->Form->input('password', array('type'=>'password','class'=>'form-control', 'label'=>'Clave', 'after'=>'<small class="text-danger">Las claves no coinciden</small>')); ?>
+          <div class="col-md-4 form-group">
+            <?php echo $this->Form->input('password', array('type'=>'password','class'=>'form-control first-pass', 'label'=>'Clave', 'after'=>'<small class="text-danger">Las claves no coinciden</small>')); ?>
           </div>
-          <div class="col-md-4 form-group second-pass">
-            <?php echo $this->Form->input('password', array('type'=>'password','class'=>'form-control', 'label'=>'Confirmar clave')); ?>
+          <div class="col-md-4 form-group">
+            <?php echo $this->Form->input('password', array('type'=>'password','class'=>'form-control second-pass', 'label'=>'Confirmar clave')); ?>
           </div>
         </div>
         <div class="row">

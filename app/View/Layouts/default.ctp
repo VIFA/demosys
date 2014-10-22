@@ -31,8 +31,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		//echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.min.css');
 		echo $this->Html->css('bootstrap.css');
-		echo $this->Html->script('bootstrap.min.js');
+		echo $this->Html->script('jquery-1.11.1.js');
 		echo $this->Html->script('bootstrap.js');
+		echo $this->Html->script('bootstrap.min.js');
 		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -73,7 +74,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				<?php echo $this->fetch('content'); ?>
 			</div>
 			<div class='col-xs-12 col-md-3'>
-				ACA VA IR EL menu
 
 				---
 				----
