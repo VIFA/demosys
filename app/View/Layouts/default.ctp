@@ -54,9 +54,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				  </div>
 				  <div class="navbar-collapse collapse navbar-responsive-collapse">
 				    <ul class="nav navbar-nav">
-				      <li><a href="#">Barrios</a></li>
-				      <li><a href="#">Manzanas</a></li>
-				      <li><a href="#">Grupos</a></li>
+				      <li><?php echo $this->Html->link('Administrar Usuarios', array('controller'=>'users', 'action'=>'index')); ?></li>
+				      <li><a href="#">Buscar</a></li>
 				    </ul>
 				    <form class="navbar-form navbar-left">
 				      <input type="text" class="form-control col-lg-8" placeholder="Buscar">
@@ -74,17 +73,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				<?php echo $this->fetch('content'); ?>
 			</div>
 			<div class='col-xs-12 col-md-3'>
-
-				---
-				----
-
-				----
-
-
-
-				----
-
-				----
+				
 			</div>
 		</div>
 		<div id="footer">

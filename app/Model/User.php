@@ -2,7 +2,19 @@
 class User extends AppModel{
 	var $name = 'User';
 	public $validate = array(
-        'user_name' => array(
+        'name' => array(
+            'required' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'Se requiere el nombre'
+            )
+        ),
+        'last_name' => array(
+            'required' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'Se requiere apellido'
+            )
+        ),
+        'username' => array(
             'required' => array(
                 'rule' => array('notEmpty'),
                 'message' => 'Se requiere nombre de usuario'

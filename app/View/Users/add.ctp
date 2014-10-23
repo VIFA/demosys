@@ -4,13 +4,14 @@
     $('.second-pass, .first-pass').blur(function(){
       var first = $('.first-pass').val();
       var second = $('.second-pass').val();
-      if(first!=second){
+      if(first!='' && second!='' && first!=second){
         $('.text-danger').show();
-        $('.first-pass').parent().parent().find('.form-group').addClass('hass-error');
-        $('.second-pass').parent().parent().find('.form-group').addClass('hass-error');
+        $('.first-pass').parent().parent().addClass('hass-error');
+        $('.second-pass').parent().parent().addClass('hass-error');
       }else{
-        $('.first-pass').parent().parent().find('.form-group').removeClass('hass-error');
-        $('.second-pass').parent().parent().find('.form-group').removeClass('hass-error');
+        $('.text-danger').hide();
+        $('.first-pass').parent().parent().removeClass('hass-error');
+        $('.second-pass').parent().parent().removeClass('hass-error');
       }
     });
   });
